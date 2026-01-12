@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 
 import {authService} from '../services/authService';
+import Header from "../components/shared/header";
+import Footer from "../components/shared/footer";
 
 export default function HostelRegistration() {
   const navigate = useNavigate();
@@ -73,16 +75,7 @@ export default function HostelRegistration() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-cyan-400 rounded flex items-center justify-center">
-              <Home className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl">HostelMate</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       <div className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8">
@@ -295,8 +288,23 @@ export default function HostelRegistration() {
               </Link>
             </p>
           </div>
+          {/* Note */}
+            <div className="mt-6 p-4 bg-cyan-50 rounded-lg">
+              <p className="text-sm text-cyan-800">
+                <strong>Note:</strong> After registration, you'll need to provide additional hostel details and documents for verification.
+              </p>
+            </div>
+          
         </div>
       </div>
+      {/* Link to Student Registration */}
+      <div className="text-center mb-6">
+          <Link to="/register-student" className="text-sm text-gray-600 hover:text-gray-900">
+            ← Register as Student
+          </Link>
+        </div>
+
+      <Footer />
     </div>
   );
 }

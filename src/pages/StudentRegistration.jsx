@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Home, User, Mail, Phone, Lock, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { authService } from '../services/authService';
+import Footer from '../components/shared/footer';
+import Header from '../components/shared/header';
 
 export default function StudentRegistration() {
   const navigate = useNavigate();
@@ -54,16 +56,9 @@ export default function StudentRegistration() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-cyan-400 rounded flex items-center justify-center">
-              <Home className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl">HostelMate</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
+
+      {/* Registration Form */}
 
       <div className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8">
@@ -210,8 +205,20 @@ export default function StudentRegistration() {
               </Link>
             </p>
           </div>
+          <div className="mt-6 p-4 bg-cyan-50 rounded-lg">
+              <p className="text-sm text-cyan-800">
+                <strong>Note:</strong> After registration, you'll need to complete your KYC (additional details) to access the system.
+              </p>
+            </div>
         </div>
       </div>
+      {/* Link to Student Registration */}
+      <div className="text-center mb-6">
+          <Link to="/register-hostel" className="text-sm text-gray-600 hover:text-gray-900">
+            ← Register as Hostel
+          </Link>
+        </div>
+        <Footer />
     </div>
   );
 }

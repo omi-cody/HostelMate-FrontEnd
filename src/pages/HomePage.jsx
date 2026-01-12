@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Search, MapPin, Home, Star, Bed, Utensils, Wrench, FileText } from 'lucide-react';
 import { useState } from 'react';
+import Footer from '../components/shared/footer.jsx';
+import Header from '../components/shared/header.jsx';
 
 export default function HomePage() {
+
   
 
   const featuredHostels = [
@@ -38,35 +41,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="w-full border-b border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-cyan-400 rounded flex items-center justify-center">
-                <Home className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl">HostelMate</span>
-            </div>
-            <nav className="hidden md:flex items-center gap-8">
-              <a href="#home" className="text-gray-700 hover:text-gray-900">
-                Home
-              </a>
-              <a href="#hostels" className="text-gray-700 hover:text-gray-900">
-                Hostels
-              </a>
-              <a href="#capabilities" className="text-gray-700 hover:text-gray-900">
-                Features
-              </a>
-            </nav>
-            <Link
-              to="/register-hostel"
-              className="px-6 py-2 bg-cyan-400 text-white rounded-lg hover:bg-cyan-500"
-            >
-              Login
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="w-full bg-white py-12" id="home">
@@ -74,6 +49,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left Side - Content */}
             <div>
+              <div className="w-60 h-10  rounded flex items-center justify-center mb-10">
+              <img src="/animation.gif" alt="HostelMate Logo" className='h-25 w-30'/>
+              </div>
               <h1 className="text-4xl lg:text-5xl mb-4">
                 Find Your Perfect <br />
                 <span className="text-cyan-400">Hostel Home</span>
@@ -195,58 +173,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="w-full border-t border-gray-200 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-cyan-400 rounded flex items-center justify-center">
-                  <Home className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl">HostelMate</span>
-              </div>
-              <p className="text-gray-600 text-sm">
-                Making hostel management simple, efficient, and transparent for everyone.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-cyan-400">About Us</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Facilities</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Rules & Regulations</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="mb-4">Support</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-cyan-400">Help Center</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Report an Issue</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Contact Warden</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="mb-4">Emergency Contact</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>📞 +977 9817704845</li>
-                <li>📧 Dilibazzar, Kathmandu</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
-            <p>© 2025 HostelMate Systems. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-cyan-400">Privacy Policy</a>
-              <a href="#" className="hover:text-cyan-400">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+<Footer />
+      
     </div>
   );
 }

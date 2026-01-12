@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Home, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { authService } from '../services/authService';
 import { toast } from 'react-toastify';
+import Footer from '../components/shared/footer';
 
 
 
@@ -57,10 +58,9 @@ const [showPassword, setShowPassword] = useState(false);
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-cyan-400 rounded flex items-center justify-center">
-              <Home className="w-5 h-5 text-white" />
+            <div className="w-60 h-10  rounded flex items-center justify-center">
+              <img src="/logo.png" alt="HostelMate Logo" className='h-25 w-30'/>
             </div>
-            <span className="text-xl">HostelMate</span>
           </Link>
         </div>
       </header>
@@ -166,6 +166,7 @@ const [showPassword, setShowPassword] = useState(false);
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
