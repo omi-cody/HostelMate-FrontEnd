@@ -44,8 +44,8 @@ export default function AdminProfile() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl mb-1">Admin Profile</h2>
-        <p className="text-gray-600">Manage your admin account settings</p>
+        <h2 className="text-2xl mb-1 text-cyan-400">Admin Profile</h2>
+        <p className="text-white">Manage your admin account settings</p>
       </div>
 
       {/* Stats */}

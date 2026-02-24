@@ -5,10 +5,10 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import AdminOverview from './AdminOverview';
-// import AllStudents from './admin/AllStudents';
-// import AllHostels from './admin/AllHostels';
-// import StudentVerifications from './admin/StudentVerifications';
-// import HostelVerifications from './admin/HostelVerifications';
+import AllStudents from './AllStudents';
+import AllHostels from './AllHostels';
+import StudentVerifications from './StudentVerifications';
+import HostelVerifications from './HostelVerifications';
 import AdminProfile from './AdminProfile';
 
 export default function AdminDashboard({ user, onLogout }) {
@@ -17,8 +17,9 @@ export default function AdminDashboard({ user, onLogout }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
+  // Option 1: Use relative paths that match your Routes
   const navItems = [
-    { path: '/admin/dashboard/', label: 'Overview', icon: Home },
+    { path: '/admin/dashboard', label: 'Overview', icon: Home }, // Removed trailing slash
     { path: '/admin/dashboard/student-verifications', label: 'Student Verifications', icon: Users },
     { path: '/admin/dashboard/hostel-verifications', label: 'Hostel Verifications', icon: Building },
     { path: '/admin/dashboard/students', label: 'All Students', icon: Users },
@@ -27,9 +28,17 @@ export default function AdminDashboard({ user, onLogout }) {
   ];
 
   const handleLogout = () => {
-    onLogout();
-    navigate('/');
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('role');
+   
+    setShowProfileMenu(false);
+    // Redirect to home page
+    window.location.href = '/';
   };
+
+  // Debug: Log current location to see what URL you're on
+  console.log('Current location:', location.pathname);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex">
@@ -145,7 +154,7 @@ export default function AdminDashboard({ user, onLogout }) {
                 {showProfileMenu && (
                   <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2">
                     <Link
-                      to="/admin/profile"
+                      to="/admin/dashboard/profile"  // Fixed this path
                       onClick={() => setShowProfileMenu(false)}
                       className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300"
                     >
@@ -170,14 +179,14 @@ export default function AdminDashboard({ user, onLogout }) {
         <main className="p-6">
           <Routes>
             <Route index element={<AdminOverview />} />
-            {/* <Route path="student-verifications" element={<StudentVerifications />} />
+            <Route path="student-verifications" element={<StudentVerifications />} />
             <Route path="hostel-verifications" element={<HostelVerifications />} />
             <Route path="students" element={<AllStudents />} />
-            <Route path="hostels" element={<AllHostels />} /> */}
+            <Route path="hostels" element={<AllHostels />} />
             <Route path="/profile" element={<AdminProfile />} />
           </Routes>
-            </main>
-        </div>
+        </main>
+      </div>
     </div>
   );
 }

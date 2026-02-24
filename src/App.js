@@ -25,7 +25,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/student-kyc" element={<StudentKyc />} />
         <Route path="/test-connection" element={<TestConnection />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/dashboard/*" element={<AdminDashboard />} />
       </Routes>
     </Router>
 
