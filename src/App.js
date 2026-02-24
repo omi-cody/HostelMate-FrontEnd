@@ -6,7 +6,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import HostelRegistration from './pages/HostelRegistration';
 import StudentRegistration from './pages/StudentRegistration';
+import StudentKyc from './pages/StudentKyc';
 import LoginPage from './pages/LoginPage';
+import AdminDashboard from './components/admin/AdminDashboard';
 import TestConnection from './pages/test.jsx';
 
 
@@ -21,7 +23,9 @@ function App() {
         <Route path="/register-student" element={<StudentRegistration />} />
         <Route path="/register-hostel" element={<HostelRegistration />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/student-kyc" element={<StudentKyc />} />
         <Route path="/test-connection" element={<TestConnection />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </Router>
 

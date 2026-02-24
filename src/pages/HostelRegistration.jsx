@@ -64,9 +64,10 @@ export default function HostelRegistration() {
         hostelType: "",
       });
     } catch (err) {
+      Object.keys(err).forEach((key) => {
+        toast.error(`${key}: ${err[key]}`);
+      });
       console.error("Registration failed:", err);
-      toast.error(err)
-      toast.error(err?.message);
     } finally {
       setLoading(false);
     }
@@ -158,7 +159,7 @@ export default function HostelRegistration() {
                 <div className="relative">
                   <Phone className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
-                    type="tel"
+                    type="number"
                     required
                     value={formData.phone}
                     onChange={(e) =>
@@ -294,16 +295,15 @@ export default function HostelRegistration() {
                 <strong>Note:</strong> After registration, you'll need to provide additional hostel details and documents for verification.
               </p>
             </div>
-          
-        </div>
-      </div>
-      {/* Link to Student Registration */}
-      <div className="text-center mb-6">
+            {/* Link to Student Registration */}
+           <div className="text-center mt-6">
           <Link to="/register-student" className="text-sm text-gray-600 hover:text-gray-900">
             ← Register as Student
           </Link>
         </div>
-
+          
+        </div>
+      </div>
       <Footer />
     </div>
   );

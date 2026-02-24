@@ -43,8 +43,10 @@ export default function StudentRegistration() {
     });
 
     }catch(err){
+      Object.keys(err).forEach(key => {
+        toast.error(`${key}: ${err[key]}`);
+      });
       console.error('Registration failed:', err);
-      toast.error(err.message || "Registration failed. Please try again.");
     }finally{
         setLoading(false);
     }
@@ -113,7 +115,7 @@ export default function StudentRegistration() {
                   <option value="">Select Gender</option>
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
-                  <option value="OTHER">Other</option>
+                  <option value="OTHERS">Other</option>
                 </select>
               </div>
 
@@ -123,7 +125,7 @@ export default function StudentRegistration() {
                 <div className="relative">
                   <Phone className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
-                    type="tel"
+                    type="number"
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}

@@ -1,6 +1,8 @@
 import api from './api';
+import { useState } from 'react';
 
 export const authService = {
+  
   // Hostel Registration
   registerHostel: async (data) => {
     try {
@@ -19,16 +21,18 @@ export const authService = {
     }
   },
 
+  // Login
   login: async (email, password) => {
+    
     try {
       const response = await api.post('/auth/login', { email, password });
       console.log(response.data);
-      const { token, role } = response.data;  
+      const { token, role, ...userData } = response.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', role);
+      localStorage.setItem('user', JSON.stringify(userData));
       
-        localStorage.setItem('token', token);
-        localStorage.setItem('role', role);
-      
-      return role;
+      return {sucess: true, data: userData};
     } catch (error) {
       throw error.response?.data || error.message;
     }

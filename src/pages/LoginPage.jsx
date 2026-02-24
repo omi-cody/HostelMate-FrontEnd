@@ -27,19 +27,29 @@ const [showPassword, setShowPassword] = useState(false);
     
    try{
     const response = await authService.login(formData.email, formData.password);
-    // console.log('Login successful:', response);
-    // toast.success('Login successful!');
+    
 
+    const userName = response.data.fullName || 'User';
+
+    const kycVerified = response.data.kycVerified ;
+    console.log('Login successful:', response);
+  
     const user = authService.getCurrentUser();
     if (user.role === 'STUDENT') {
-      navigate('/student/dashboard');
-      toast.info('Welcome Student!');
-
+      if (!kycVerified) {
+        navigate('/student-kyc');
+        toast.info('Please complete your KYC to proceed.');
+        return;
+      }
+      navigate('/');
+      toast.info(`Welcome ${userName}!`);
+    
     } else if (user.role === 'HOSTEL') {
-      navigate('/hostel/dashboard');
-      toast.info('Welcome Hostel Admin!');
+      navigate('/');
+      toast.info(`Welcome ${userName}!`);
     } else if (user.role === 'ADMIN') {
       navigate('/admin/dashboard');
+      toast.info(`Welcome ${userName}!`);
     } else {
       toast.error('Unknown user role. Please contact support.');
     }
